@@ -7,14 +7,7 @@ import SQL from "sql-template-strings";
  * @property {strings} payment - name of payment table
  *  @property {strings} pickup - name of pickup table
  */
-const TABLE = {
-  users: "user_id",
-  drivers: "driver_id",
-  driverpayment: "driverpayment_id",
-  driverpickup: "driverpickup_id",
-  payment: "payment_id",
-  pickup: "pickup_id"
-};
+const TABLE = process.env.TABLE;
 
 /**
  * This class

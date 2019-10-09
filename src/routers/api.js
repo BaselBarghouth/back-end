@@ -17,7 +17,8 @@ const router = express.Router();
  */
 let conection;
 const checkConection = async () => {
-  if (conection === undefined) conection = await sqlite.open("./db.sqlite");
+  if (conection === undefined)
+    conection = await sqlite.open(`./${process.env.DATABASENAME}.sqlite`);
 };
 checkConection();
 router.get("/", async (req, res, next) => {
