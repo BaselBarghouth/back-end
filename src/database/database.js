@@ -1,4 +1,5 @@
 import SQL from "sql-template-strings";
+import { tables as TABLE } from "./config";
 /**
  * @type {object}- holds key values where the key is the table name and value is the primary key for this table
  * @property {strings} users - name of users table
@@ -7,7 +8,6 @@ import SQL from "sql-template-strings";
  * @property {strings} payment - name of payment table
  *  @property {strings} pickup - name of pickup table
  */
-const TABLE = process.env.TABLE;
 
 /**
  * This class

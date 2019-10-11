@@ -1,5 +1,6 @@
 const readline = require("readline");
 const sqlite = require("sqlite");
+const createConstants = require("./config");
 const readlineInterface = readline.createInterface(
   process.stdin,
   process.stdout
@@ -146,11 +147,16 @@ const creatingDataBase = async () => {
     id_es[tablesName[i]] = primaryKeys[i];
   }
   let tablesApi = tablesName.map(i => {
-    return `/${i}`;
+    return `app.use("/${i}",router);`;
   });
   let relationsApi = Object.values(relations).map(i => {
-    return `/v1/${i[0]}/${i[1]}`;
+    return `app.use("/v1/${i[0]}/${i[1]}",router);`;
   });
+  let ApiAll = relationsApi.concat(tablesApi);
+  let Api = "";
+  ApiAll.forEach(element => {
+    Api += element;
+  });
+  createConstants(id_es, Api, dataBaseName);
 };
-
 creatingDataBase();

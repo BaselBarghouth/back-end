@@ -4,7 +4,7 @@ import validation from "../validation/validation";
 import jwt from "jsonwebtoken";
 import auth from "../auth/auth";
 import sqlite from "sqlite";
-
+import { dataBaseName } from "../database/config";
 const router = express.Router();
 /**
  * Route that returns a list of data
@@ -18,7 +18,7 @@ const router = express.Router();
 let conection;
 const checkConection = async () => {
   if (conection === undefined)
-    conection = await sqlite.open(`./${process.env.DATABASENAME}.sqlite`);
+    conection = await sqlite.open(`./src/${dataBaseName}.sqlite`);
 };
 checkConection();
 router.get("/", async (req, res, next) => {
